@@ -1,5 +1,6 @@
 package uk.sky.quizz.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.*;
@@ -29,6 +30,7 @@ public class Answer implements Serializable {
 
 	@JoinColumn(name = "question_id", referencedColumnName = "id", nullable = false)
 	@ManyToOne(optional = false)
+	@JsonIgnore
 	private Question questionId;
 
 	public Answer(Integer id) {
@@ -36,5 +38,6 @@ public class Answer implements Serializable {
 	}
 
 	@ManyToMany(mappedBy = "answerCollection")
+	@JsonIgnore
 	private Collection<Player> playerCollection;
 }
