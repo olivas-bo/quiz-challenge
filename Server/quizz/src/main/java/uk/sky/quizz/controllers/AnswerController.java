@@ -1,7 +1,5 @@
 package uk.sky.quizz.controllers;
 
-import com.sun.tools.internal.ws.wsdl.document.http.HTTPConstants;
-import com.sun.tools.internal.ws.wsdl.document.http.HTTPOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import uk.sky.quizz.domain.*;
@@ -28,5 +26,8 @@ public class AnswerController {
 		Answer answer = answerRepository.findOne(answerId);
 		Player player = playerRepository.findOne(playerId);
 
+		player.getAnswerCollection().add(answer);
+
+		return "";
 	}
 }
