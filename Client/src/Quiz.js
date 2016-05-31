@@ -25,10 +25,12 @@ export default class Quiz extends Component {
 		// /answer/{answerId}/player/{playerId}
 		const answerId = sel.id;
 		const playerId = 1;
-		fetch(`http://localhost:8080/answer/${answerId}/player/${playerId}`, {
-		  method: 'POST',
-		  body: {}
-		});
+		fetch(`http://localhost:8080/answer/${answerId}/player/${playerId}`, {method: 'POST',body: {}})
+			.then(() => {
+				if(this.state.questionsAnswered.length === this.state.quiz.questionCollection.length) {
+					browserHistory.push(`/board/${this.props.params.quizId}`);
+				}
+			});
 
 	}
 
@@ -54,6 +56,7 @@ export default class Quiz extends Component {
 	    			</ul>
 	    		</li>
 		    	)}
+		    	<input type="button" value="finish" disabled={enableFinish ? '' : 'disabled'} />
 	    	</ul>
 	    </div>
 	  )
