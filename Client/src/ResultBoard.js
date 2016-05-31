@@ -27,8 +27,8 @@ export default class ResultBoard extends Component {
 						</tr>
 					</thead>
 					<tbody>
-					{Object.keys(scores).map(result => (
-						<tr key={result}><td>{result}</td><td>{scores[result]}</td></tr>
+					{Object.keys(scores).map((result, index) => (
+						<tr className={index == 0 ? 'winner' : ''} key={result + index}><td>{result}</td><td>{scores[result]}</td></tr>
 					))}
 					</tbody>
 				</table>
