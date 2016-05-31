@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Quiz from './Quiz';
 import Quizzes from './Quizzes';
+import ResultBoard from './ResultBoard';
 
 import { Router, Route, Link, browserHistory } from 'react-router';
 
@@ -13,6 +14,7 @@ ReactDOM.render(
 		<Route path="/" component={App} />
 		<Route path="/quizzes" component={Quizzes} />
 		<Route path="/quiz/:quizId" component={Quiz}/>
+		<Route path="/board/:quizId" component={ResultBoard}/>
 	</Router>,
 	document.getElementById('root')
 );
