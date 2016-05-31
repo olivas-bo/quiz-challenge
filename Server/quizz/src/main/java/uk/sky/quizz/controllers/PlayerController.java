@@ -15,7 +15,7 @@ public class PlayerController {
 	@Autowired
 	private PlayerRepository playerRepository;
 
-	@RequestMapping(method = RequestMethod.GET, path = "/register/{playerName}")
+	@RequestMapping(method = RequestMethod.POST, path = "/register/{playerName}")
 	public Integer registerUser(@PathVariable String playerName) {
 
 		Player player = new Player();
