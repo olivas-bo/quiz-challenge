@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
 
 export default class App extends Component {
+
+  componentDidMount() {
+  	setTimeout(() => browserHistory.push('/quiz/xxxx'), 1000)
+  }
+
   render() {
     return (
       <div>
-	      <h1>Hello, world.</h1>
-	      <Link to="/quizzes">users</Link>
-	      <br/>
-	      <Link to={`/quiz/${Math.random()}`}>user</Link>
+	      <h1>Hold you horses, loading your quiz</h1>	      
       </div>
     );
   }
