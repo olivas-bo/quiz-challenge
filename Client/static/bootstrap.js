@@ -14,5 +14,5 @@
 })(window, document, "1.3.2", function ($, L) {
 
     //your code here (a div with some content)
-    $("<div style='width:500px;height:400px; border:1px solid black; background-color:white; position:fixed; top: 0; right:0; z-index:99999'><iframe src='http://localhost:3000/' width='100%' height='100%' style='overflow-x:hidden;border:none'></div>").appendTo("body");
+    $("<div style='width:500px;height:428px; background-color:white; position:fixed; top: 269px; right:74px; z-index:99999'><iframe src='http://localhost:3000/' width='100%' height='100%' style='overflow-x:hidden;border:none'></div>").appendTo("body");
 })
