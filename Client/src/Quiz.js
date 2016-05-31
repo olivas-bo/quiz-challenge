@@ -18,9 +18,11 @@ export default class Quiz extends Component {
 		this.forceUpdate(); // since we didnt call setState, we need to  force a render
 
 		// /answer/{answerId}/player/{playerId}
-		fetch('/answer/{answerId}/player/{playerId}', {
+		const answerId = qs.answerCollection.indexOf(sel);
+		const playerId = 0;
+		fetch(`/answer/${answerId}/player/${playerId}`, {
 		  method: 'POST',
-		  body: {whats: 'up'}
+		  body: {}
 		});
 
 	}
