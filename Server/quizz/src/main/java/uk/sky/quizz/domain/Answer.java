@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(catalog = "quiz", schema = "")
 @XmlRootElement
 @EqualsAndHashCode(of = "id")
 @Getter

@@ -1,8 +1,8 @@
 insert into Show(id, text) values (1, 'Game of Thrones - S6.E7 The Broken Man');
 
-insert into Quiz(id, showId) values (1, 1);
+insert into Quiz(id, show_id) values (1, 1);
 
-insert into Question(id, text, quizId) values (1, 'Dummy Sample question 1', 1);
+insert into Question(id, text, quiz_id) values (1, 'Dummy Sample question 1', 1);
 -- insert into Question(id, text, quizId) values (2, 'Dummy Sample question 2', 1);
 -- insert into Question(id, text, quizId) values (3, 'Dummy Sample question 3', 1);
 
