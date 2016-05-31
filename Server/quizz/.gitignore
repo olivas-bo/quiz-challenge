@@ -5,3 +5,10 @@
 build/
 src/main/resources/
 src/test/
+/bin/
+
+.idea/
+.classpath
+.settings/
+.classpath
+.project
