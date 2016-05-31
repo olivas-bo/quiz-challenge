@@ -15,3 +15,11 @@ insert into Answer(id, text, question_id, correct) values (5, 'Rickon', 2, 1);
 insert into Answer(id, text, question_id, correct) values (6, 'Dickon', 2, 0);
 insert into Answer(id, text, question_id, correct) values (7, 'Ramsay', 2, 0);
 insert into Answer(id, text, question_id, correct) values (8, 'Eddard', 2, 0);
+
+insert into player(id, name) values(1, 'Bruno');
+insert into player(id, name) values(2, 'Tiago');
+
+insert into player_answer(answer_id, player_id) values (3, 1);
+insert into player_answer(answer_id, player_id) values (6, 1);
+insert into player_answer(answer_id, player_id) values (3, 2);
+insert into player_answer(answer_id, player_id) values (5, 2);
