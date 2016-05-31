@@ -15,8 +15,12 @@ import uk.sky.quizz.repositories.PlayerRepository;
 @RequestMapping("/player")
 public class PlayerController {
 
+	private final PlayerRepository playerRepository;
+
 	@Autowired
-	private PlayerRepository playerRepository;
+	public PlayerController(PlayerRepository playerRepository) {
+		this.playerRepository = playerRepository;
+	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/register/{playerName}")
 	public Integer registerUser(@PathVariable String playerName) {
@@ -26,5 +30,10 @@ public class PlayerController {
 		playerRepository.save(player);
 
 		return player.getId();
+	}
+
+	@RequestMapping(method = RequestMethod.POST, path = "/{playerId}/play/{answerId}/")
+	public void play(@PathVariable int playerId, @PathVariable int answerId) {
+
 	}
 }
