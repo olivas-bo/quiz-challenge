@@ -2,19 +2,24 @@ import React, { Component } from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import _ from 'lodash';
 
+// TODO: http://localhost:8080/show/1/quiz
+
 const sampleQuiz = {
 	id: '1',
 	questions: [
-		{text: 'de que cor era o cavalo branco de napoleão?',
-		 answers: [{text: 'branco'}, {text: 'azul'}, 
-		 		   {text: 'verde'}, {text: 'malhado'}]}
+		{text: 'what color whas Napoleon\'s white horse?',
+		 answers: [{text: 'white'}, {text: 'blue'}, 
+		 		   {text: 'green'}, {text: 'dotted'}]}
 	]
 }
 
 export default class Quiz extends Component {
 
 	componentWillMount() {
-	  this.setState({quiz: sampleQuiz});
+		fetch("http://localhost:8080/show/1/quiz")
+			.then(console.log.bind(console));
+
+	  	this.setState({quiz: sampleQuiz});
 	}
 
 	validateAnswer(qs, sel) {
@@ -23,7 +28,6 @@ export default class Quiz extends Component {
 	}
 
 	render() {
-	  require('!style!css!./main.css');
 
 	  const quiz = this.state.quiz;
 	  if(!quiz) return null;

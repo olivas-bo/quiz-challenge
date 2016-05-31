@@ -4,6 +4,8 @@ body {
     background-attachment: fixed;
     background-position: top center;
     color: #fff;
+
+    width: 98% !important;
 }
 
 .question {
