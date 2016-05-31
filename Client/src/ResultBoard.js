@@ -22,13 +22,16 @@ export default class ResultBoard extends Component {
 				<table>
 					<thead>
 						<tr>
-							<th>Player</th>
-							<th>Score</th>
+							<th><h1>Player</h1></th>
+							<th><h1>Score</h1></th>
 						</tr>
 					</thead>
 					<tbody>
 					{Object.keys(scores).map((result, index) => (
-						<tr className={index == 0 ? 'winner' : ''} key={result + index}><td>{result}</td><td>{scores[result]}</td></tr>
+						<tr className={index == 0 ? 'winner' : ''} key={result + index}>
+							<td><h3>{result}</h3></td>
+							<td><h3>{scores[result]}</	h3></td>
+						</tr>
 					))}
 					</tbody>
 				</table>
