@@ -1,7 +1,6 @@
 package uk.sky.quizz.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,21 +25,23 @@ public class PlayerController {
 
 	@RequestMapping(method = RequestMethod.POST, path = "/register/{playerName}")
 	public Integer registerUser(@PathVariable String playerName) {
-
 		Player player = new Player();
 		player.setName(playerName);
 		playerRepository.save(player);
-
 		return player.getId();
-	}
-
-	@RequestMapping(method = RequestMethod.POST, path = "/{playerId}/play/{answerId}/")
-	public void play(@PathVariable int playerId, @PathVariable int answerId) {
-
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/scores")
 	public Map<String, Integer> scores() {
-		return playerRepository.getScores();
+		return playerRepository.getScores()
+			.stream()
+			.map(objs -> Collections.singletonMap(objs[0].toString(), Integer.valueOf(objs[1].toString())))
+			.sorted((m1, m2) -> m2.values().stream().findFirst().get().compareTo(m1.values().stream().findFirst().get()))
+			.reduce((m1, m2) -> {
+				Map<String, Integer> m = new LinkedHashMap<>();
+				m.putAll(m1);
+				m.putAll(m2);
+				return m;
+			}).get();
 	}
 }
