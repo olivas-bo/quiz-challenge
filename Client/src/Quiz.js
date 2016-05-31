@@ -33,7 +33,7 @@ export default class Quiz extends Component {
 	}
 
 	render() {
-	  const quiz = this.state.quiz;
+	  const {quiz, questionsAnswered, enableFinish} = this.state;
 	  if(!quiz) return null;
 
 	  return (
@@ -43,9 +43,9 @@ export default class Quiz extends Component {
 	    		<li className="question" key={qs.id}>
 	    			<h1>{qs.text}</h1>
 	    			<ul>
-	    				{qs.answerCollection.map(a => 
-	    					<li key={a.id} className={'answer ' + a.className + ' ' + (this.state.questionsAnswered.indexOf(qs.id) == -1 ? 'selectable_answer' : '')}
-	    						onClick={this.state.questionsAnswered.indexOf(qs.id) == -1 ? this.validateAnswer.bind(this, qs, a) : ''}>
+	    				{qs.answerCollection.map(a =>
+	    					<li key={a.id} className={'answer ' + a.className + ' ' + (questionsAnswered.indexOf(qs.id) == -1 ? 'selectable_answer' : '')}
+	    						onClick={questionsAnswered.indexOf(qs.id) == -1 ? this.validateAnswer.bind(this, qs, a) : ''}>
 	    						<h3 style={{display: 'inline'}}>
 	    							<i className='skycon-chevron'></i>{a.text}
 	    						</h3>
