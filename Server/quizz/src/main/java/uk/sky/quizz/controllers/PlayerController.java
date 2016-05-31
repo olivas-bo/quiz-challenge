@@ -27,4 +27,14 @@ public class PlayerController {
 
 		return player.getId();
 	}
+
+	@RequestMapping(method = RequestMethod.POST, path = "/{playerId}/answer/{playerName}")
+	public Integer answerQuestion(@PathVariable String playerName) {
+
+		Player player = new Player();
+		player.setName(playerName);
+		playerRepository.save(player);
+
+		return player.getId();
+	}
 }
