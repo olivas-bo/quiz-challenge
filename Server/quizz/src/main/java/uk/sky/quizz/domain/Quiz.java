@@ -2,6 +2,7 @@ package uk.sky.quizz.domain;
 
 import java.io.Serializable;
 import java.util.Collection;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,13 +14,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@XmlRootElement
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
@@ -34,6 +37,7 @@ public class Quiz implements Serializable {
 	private Integer id;
 	@JoinColumn(name = "show_id", referencedColumnName = "id", nullable = false)
 	@ManyToOne(optional = false)
+	@JsonIgnore
 	private Show showId;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "quizId")
 	private Collection<Question> questionCollection;
