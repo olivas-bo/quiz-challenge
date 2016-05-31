@@ -1,0 +1,15 @@
+logging.level.org.hibernate.SQL: DEBUG
+
+hibernate.hbm2ddl.auto: create
+vcap:
+    services:
+        voucher-db:
+            credentials:
+                hostname: localhost
+                name: quizz
+                port: 3306
+                username: root
+                password:
+                url: jdbc:mysql://
+                driver: com.mysql.jdbc.Driver
+
