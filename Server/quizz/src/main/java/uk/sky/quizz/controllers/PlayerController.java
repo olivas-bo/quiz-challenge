@@ -31,9 +31,4 @@ public class PlayerController {
 
 		return player.getId();
 	}
-
-	@RequestMapping(method = RequestMethod.POST, path = "/{playerId}/play/{answerId}/")
-	public void play(@PathVariable int playerId, @PathVariable int answerId) {
-
-	}
 }
