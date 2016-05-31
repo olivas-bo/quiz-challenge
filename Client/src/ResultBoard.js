@@ -30,7 +30,7 @@ export default class ResultBoard extends Component {
 					{Object.keys(scores).map((result, index) => (
 						<tr className={index == 0 ? 'winner' : ''} key={result + index}>
 							<td><h3>{result}</h3></td>
-							<td><h3>{scores[result]}</h3></td>
+							<td><h3>{scores[result]}</	h3></td>
 						</tr>
 					))}
 					</tbody>
