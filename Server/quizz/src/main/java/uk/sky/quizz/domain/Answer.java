@@ -33,5 +33,6 @@ public class Answer implements Serializable {
 	private Question questionId;
 
 	@ManyToMany(mappedBy = "answerCollection")
+	@JsonIgnore
 	private Collection<Player> playerCollection;
 }

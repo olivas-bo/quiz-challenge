@@ -17,23 +17,26 @@ import uk.sky.quizz.repositories.PlayerRepository;
 @RequestMapping("/player")
 public class PlayerController {
 
+	private final PlayerRepository playerRepository;
+
 	@Autowired
-	private PlayerRepository playerRepository;
+	public PlayerController(PlayerRepository playerRepository) {
+		this.playerRepository = playerRepository;
+	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/register/{playerName}")
 	public Integer registerUser(@PathVariable String playerName) {
+
 		Player player = new Player();
 		player.setName(playerName);
 		playerRepository.save(player);
+
 		return player.getId();
 	}
 
-	@RequestMapping(method = RequestMethod.POST, path = "/{playerId}/answer/{playerName}")
-	public Integer answerQuestion(@PathVariable String playerName) {
-		Player player = new Player();
-		player.setName(playerName);
-		playerRepository.save(player);
-		return player.getId();
+	@RequestMapping(method = RequestMethod.POST, path = "/{playerId}/play/{answerId}/")
+	public void play(@PathVariable int playerId, @PathVariable int answerId) {
+
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/scores")
