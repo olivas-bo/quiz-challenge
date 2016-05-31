@@ -4,7 +4,7 @@ import { Router, Route, Link, browserHistory } from 'react-router';
 export default class App extends Component {
 
   componentDidMount() {
-  	setTimeout(() => browserHistory.push('/quiz/xxxx'), 1000)
+  	setTimeout(() => browserHistory.push('/quiz/game-of-thrones'), 1000)
   }
 
   render() {
