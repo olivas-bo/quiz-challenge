@@ -56,7 +56,6 @@ export default class Quiz extends Component {
 	    			</ul>
 	    		</li>
 		    	)}
-		    	<input type="button" value="finish" disabled={enableFinish ? '' : 'disabled'} />
 	    	</ul>
 	    </div>
 	  )
