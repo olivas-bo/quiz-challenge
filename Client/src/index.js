@@ -12,5 +12,5 @@ ReactDOM.render(
 		<Route path="/quizzes" component={Quizzes} />
 		<Route path="/quiz/:quizId" component={Quiz}/>
 	</Router>,
-document.getElementById('root')
+	document.getElementById('root')
 );
