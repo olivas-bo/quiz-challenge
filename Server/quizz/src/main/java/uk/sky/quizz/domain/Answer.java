@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@XmlRootElement
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
@@ -32,10 +31,6 @@ public class Answer implements Serializable {
 	@ManyToOne(optional = false)
 	@JsonIgnore
 	private Question questionId;
-
-	public Answer(Integer id) {
-		this.id = id;
-	}
 
 	@ManyToMany(mappedBy = "answerCollection")
 	@JsonIgnore

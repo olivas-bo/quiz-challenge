@@ -8,9 +8,10 @@ body {
     width: 98% !important;
 }
 
-.question {
-}
 
+.questions {overflow-y: visible;}
+
+.question {}
 
 .answer i {color: white;}
 .answer.selected {color: #f6cb1f;}

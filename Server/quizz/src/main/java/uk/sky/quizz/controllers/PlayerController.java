@@ -1,5 +1,6 @@
 package uk.sky.quizz.controllers;
 
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,5 +31,10 @@ public class PlayerController {
 		playerRepository.save(player);
 
 		return player.getId();
+	}
+
+	@RequestMapping(method = RequestMethod.GET, path = "/scores")
+	public Map<String, Integer> scores() {
+		return playerRepository.getScores();
 	}
 }

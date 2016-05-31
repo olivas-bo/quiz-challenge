@@ -41,8 +41,4 @@ public class Quiz implements Serializable {
 	private Show showId;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "quizId")
 	private Collection<Question> questionCollection;
-
-	public Quiz(Integer id) {
-		this.id = id;
-	}
 }
