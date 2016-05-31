@@ -1,0 +1,19 @@
+body {
+    background: #11244C url('http://go.sky.com/images/general/background.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top center;
+    color: #fff;
+
+    width: 98% !important;
+}
+
+.question {
+}
+
+
+.answer i {color: white;}
+.answer.selected {color: #f6cb1f;}
+.answer.correct {color: #00db00;}
+.answer.incorrect {color: red;}
+.answer:hover {cursor: pointer;background: #f6cb1f;}
