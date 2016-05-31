@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@XmlRootElement
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
@@ -25,17 +24,11 @@ public class Player implements Serializable {
 	@Column(nullable = false)
 	private Integer id;
 
-
 	@ManyToMany
 	@JoinTable(name = "player_answer",
 		joinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"),
 		inverseJoinColumns = @JoinColumn(name = "answer_id", referencedColumnName = "id"))
-
 	private Collection<Answer> answerCollection;
 
 	private String name;
-
-	public Player(Integer id) {
-		this.id = id;
-	}
 }
