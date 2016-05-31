@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@XmlRootElement
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
@@ -27,7 +26,7 @@ public class Show implements Serializable {
 	private String text;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "showId")
 	private Collection<Quiz> quizCollection;
-
+	
 	public Show(Integer id) {
 		this.id = id;
 	}

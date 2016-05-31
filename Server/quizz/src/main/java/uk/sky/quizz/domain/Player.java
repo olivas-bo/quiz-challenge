@@ -1,15 +1,18 @@
 package uk.sky.quizz.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@XmlRootElement
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
@@ -24,6 +27,7 @@ public class Player implements Serializable {
 	private Integer id;
 	@JoinColumn(name = "question_id", referencedColumnName = "id")
 	@ManyToOne
+	@JsonIgnore
 	private Question questionId;
 
 	public Player(Integer id) {
