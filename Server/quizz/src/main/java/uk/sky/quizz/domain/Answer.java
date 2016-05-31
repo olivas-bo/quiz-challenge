@@ -1,40 +1,37 @@
 package uk.sky.quizz.domain;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 
 @MappedSuperclass
 @Table(catalog = "quiz", schema = "")
 @XmlRootElement
-public class Show implements Serializable {
+public class Answer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(nullable = false)
 	private Integer id;
 	@Column(length = 255)
 	private String text;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "showId")
-	private Collection<Quiz> quizCollection;
+	private Boolean correct;
+	@JoinColumn(name = "question_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false)
+	private Question questionId;
 
-	public Show() {
+	public Answer() {
 	}
 
-	public Show(Integer id) {
+	public Answer(Integer id) {
 		this.id = id;
 	}
 
@@ -54,13 +51,20 @@ public class Show implements Serializable {
 		this.text = text;
 	}
 
-	@XmlTransient
-	public Collection<Quiz> getQuizCollection() {
-		return quizCollection;
+	public Boolean getCorrect() {
+		return correct;
 	}
 
-	public void setQuizCollection(Collection<Quiz> quizCollection) {
-		this.quizCollection = quizCollection;
+	public void setCorrect(Boolean correct) {
+		this.correct = correct;
+	}
+
+	public Question getQuestionId() {
+		return questionId;
+	}
+
+	public void setQuestionId(Question questionId) {
+		this.questionId = questionId;
 	}
 
 	@Override
@@ -73,10 +77,10 @@ public class Show implements Serializable {
 	@Override
 	public boolean equals(Object object) {
 		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof Show)) {
+		if (!(object instanceof Answer)) {
 			return false;
 		}
-		Show other = (Show) object;
+		Answer other = (Answer) object;
 		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 			return false;
 		}
@@ -85,7 +89,7 @@ public class Show implements Serializable {
 
 	@Override
 	public String toString() {
-		return "uk.sky.quizz.domain.Show[ id=" + id + " ]";
+		return "uk.sky.quizz.domain.Answer[ id=" + id + " ]";
 	}
 
 }

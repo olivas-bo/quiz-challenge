@@ -1,24 +1,22 @@
 package uk.sky.quizz.domain;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 
 @MappedSuperclass
 @Table(catalog = "quiz", schema = "")
 @XmlRootElement
-public class Show implements Serializable {
+public class Player implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -26,15 +24,14 @@ public class Show implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
 	private Integer id;
-	@Column(length = 255)
-	private String text;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "showId")
-	private Collection<Quiz> quizCollection;
+	@JoinColumn(name = "question_id", referencedColumnName = "id")
+    @ManyToOne
+	private Question questionId;
 
-	public Show() {
+	public Player() {
 	}
 
-	public Show(Integer id) {
+	public Player(Integer id) {
 		this.id = id;
 	}
 
@@ -46,21 +43,12 @@ public class Show implements Serializable {
 		this.id = id;
 	}
 
-	public String getText() {
-		return text;
+	public Question getQuestionId() {
+		return questionId;
 	}
 
-	public void setText(String text) {
-		this.text = text;
-	}
-
-	@XmlTransient
-	public Collection<Quiz> getQuizCollection() {
-		return quizCollection;
-	}
-
-	public void setQuizCollection(Collection<Quiz> quizCollection) {
-		this.quizCollection = quizCollection;
+	public void setQuestionId(Question questionId) {
+		this.questionId = questionId;
 	}
 
 	@Override
@@ -73,10 +61,10 @@ public class Show implements Serializable {
 	@Override
 	public boolean equals(Object object) {
 		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof Show)) {
+		if (!(object instanceof Player)) {
 			return false;
 		}
-		Show other = (Show) object;
+		Player other = (Player) object;
 		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 			return false;
 		}
@@ -85,7 +73,7 @@ public class Show implements Serializable {
 
 	@Override
 	public String toString() {
-		return "uk.sky.quizz.domain.Show[ id=" + id + " ]";
+		return "uk.sky.quizz.domain.Player[ id=" + id + " ]";
 	}
 
 }
