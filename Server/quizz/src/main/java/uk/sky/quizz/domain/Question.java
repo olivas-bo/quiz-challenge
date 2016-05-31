@@ -44,8 +44,4 @@ public class Question implements Serializable {
 	@ManyToOne(optional = false)
 	@JsonIgnore
 	private Quiz quizId;
-
-	public Question(Integer id) {
-		this.id = id;
-	}
 }

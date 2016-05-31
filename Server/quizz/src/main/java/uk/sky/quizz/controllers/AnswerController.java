@@ -20,13 +20,17 @@ public class AnswerController {
 		this.playerRepository = playerRepository;
 	}
 
-	@RequestMapping(method = RequestMethod.GET, path = "/{answerId}/player/{playerId}")
+	@RequestMapping(method = RequestMethod.POST, path = "/{answerId}/player/{playerId}")
 	public String answer(@PathVariable int answerId, @PathVariable int playerId) {
 
 		Answer answer = answerRepository.findOne(answerId);
 		Player player = playerRepository.findOne(playerId);
 
 		player.getAnswerCollection().add(answer);
+		answer.getPlayerCollection().add(player);
+
+		answerRepository.save(answer);
+		playerRepository.save(player);
 
 		return "";
 	}
