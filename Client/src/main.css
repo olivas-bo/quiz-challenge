@@ -17,4 +17,4 @@ body {
 .answer.selected {color: #f6cb1f;}
 .answer.correct {color: #00db00;}
 .answer.incorrect {color: red;}
-.answer:hover {cursor: pointer;background: #f6cb1f;}
+.selectable_answer:hover {cursor: pointer;background: #f6cb1f;};

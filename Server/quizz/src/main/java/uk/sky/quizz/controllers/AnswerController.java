@@ -25,7 +25,7 @@ public class AnswerController {
 
 		Answer answer = answerRepository.findOne(answerId);
 		Player player = playerRepository.findOne(playerId);
-
+		
 		player.getAnswerCollection().add(answer);
 		answer.getPlayerCollection().add(player);
 
