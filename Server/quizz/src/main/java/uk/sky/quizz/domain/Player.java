@@ -30,6 +30,8 @@ public class Player implements Serializable {
 	@JsonIgnore
 	private Question questionId;
 
+	private String name;
+
 	public Player(Integer id) {
 		this.id = id;
 	}
