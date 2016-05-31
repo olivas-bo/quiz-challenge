@@ -1,23 +1,16 @@
 package uk.sky.quizz.domain;
 
 import java.io.Serializable;
-
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import java.util.Collection;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
+@XmlRootElement
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
@@ -29,15 +22,19 @@ public class Answer implements Serializable {
 	@Basic(optional = false)
 	@Column(nullable = false)
 	private Integer id;
+
 	@Column(length = 255)
 	private String text;
 	private Boolean correct;
+
 	@JoinColumn(name = "question_id", referencedColumnName = "id", nullable = false)
 	@ManyToOne(optional = false)
-	@JsonIgnore
 	private Question questionId;
 
 	public Answer(Integer id) {
 		this.id = id;
 	}
+
+	@ManyToMany(mappedBy = "answerCollection")
+	private Collection<Player> playerCollection;
 }

@@ -44,8 +44,6 @@ public class Question implements Serializable {
 	@ManyToOne(optional = false)
 	@JsonIgnore
 	private Quiz quizId;
-	@OneToMany(mappedBy = "questionId")
-	private Collection<Player> playerCollection;
 
 	public Question(Integer id) {
 		this.id = id;
