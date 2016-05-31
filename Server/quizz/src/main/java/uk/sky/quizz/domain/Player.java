@@ -1,6 +1,8 @@
 package uk.sky.quizz.domain;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import lombok.EqualsAndHashCode;
@@ -22,9 +24,14 @@ public class Player implements Serializable {
 	@Basic(optional = false)
 	@Column(nullable = false)
 	private Integer id;
-	@JoinColumn(name = "question_id", referencedColumnName = "id")
-	@ManyToOne
-	private Question questionId;
+
+
+	@ManyToMany
+	@JoinTable(name = "player_answer",
+		joinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"),
+		inverseJoinColumns = @JoinColumn(name = "answer_id", referencedColumnName = "id"))
+
+	private Collection<Answer> answerCollection;
 
 	private String name;
 
