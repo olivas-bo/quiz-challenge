@@ -10,3 +10,6 @@ build/
 .settings/
 .classpath
 .project
+
+quiz.mv.db
+quiz.trace.db

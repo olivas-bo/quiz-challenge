@@ -9,4 +9,4 @@ insert into Question(id, text, quiz_id) values (1, 'Dummy Sample question 1', 1)
 insert into Answer(id, text, question_id, correct) values (1, 'Answer 1', 1, 0);
 insert into Answer(id, text, question_id, correct) values (2, 'Answer 2', 1, 0);
 insert into Answer(id, text, question_id, correct) values (3, 'Answer 3', 1, 0);
-insert into Answer(id, text, question_id, correct) values (4, 'Answer 4', 1, 0);
+insert into Answer(id, text, question_id, correct) values (4, 'Answer 4', 1, 1);
