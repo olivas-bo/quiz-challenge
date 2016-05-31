@@ -27,11 +27,9 @@ public class PlayerController {
 
 	@RequestMapping(method = RequestMethod.POST, path = "/register/{playerName}")
 	public Integer registerUser(@PathVariable String playerName) {
-
 		Player player = new Player();
 		player.setName(playerName);
 		playerRepository.save(player);
-
 		return player.getId();
 	}
 
