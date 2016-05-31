@@ -1,8 +1,6 @@
 package uk.sky.quizz.controllers;
 
-import com.google.common.collect.Maps;
 import java.util.*;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
