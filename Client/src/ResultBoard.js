@@ -4,6 +4,13 @@ import _ from 'lodash';
 
 export default class ResultBoard extends Component {
 
+	componentDidMount() {
+		if(window.first_time) {
+			window.first_time = false;
+			setTimeout(() => browserHistory.push('/quiz/game-of-thrones'), 3000)
+		}
+	}
+
 	componentWillMount() {
 		this.setState({scores: null})
 		// https://github.com/github/fetch
@@ -19,6 +26,7 @@ export default class ResultBoard extends Component {
 
 	  return (
 	    <div className="scores">
+	    		<h2>LeaderBoard</h2>
 				<table>
 					<thead>
 						<tr>
